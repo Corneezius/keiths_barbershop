@@ -3,22 +3,22 @@
   class Barber
   {
     private $name;
-    private $barber_id;
+    private $id;
 
-    function __construct($barber_name, $new_id = null)
+    function __construct($barber_name, $id = null)
     {
-      $this->$name = $barber_name;
-      $this->$barber_id = $new_id;
+      $this->name = $barber_name;
+      $this->id = $id;
     }
 
     function getId()
     {
-      return $this->barber_id;
+      return $this->id;
     }
 
     function setName($barber_name)
     {
-      $this->name =$barber_name;
+      $this->name = $barber_name;
     }
 
     function getName()
@@ -35,9 +35,9 @@
     function getClients()
     {
       $clients = array();
-      $returned_clients = $GLOBALS['DB']->query("SELECT * FROM clients WHERE barber_id = {$this->getID()};")
+      $returned_clients = $GLOBALS['DB']->query("SELECT * FROM clients WHERE barber_id = {$this->getID()};");
 
-      foreach($returned_clients as $client)
+      foreach ($returned_clients as $client)
       {
         $client_name = $client['name'];
         $id = $client['id'];
@@ -48,10 +48,10 @@
         return $clients;
       }
 
-      function update($new_name)
+      function update($barber_name)
       {
-        $GLOBALS['DB']->exec("UPDATE barbers SET name = '{$new_name}' WHERE id = {$this->getId()}");
-        $this->setName($new_name);
+        $GLOBALS['DB']->exec("UPDATE barbers SET name = '{$barber_name}' WHERE id = {$this->getId()}");
+        $this->setName($barber_name);
       }
 
       static function getAll()
