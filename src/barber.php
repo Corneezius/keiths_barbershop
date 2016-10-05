@@ -29,7 +29,7 @@
     function save()
     {
         $GLOBALS['DB']->exec("INSERT INTO barbers (name) VALUES ('{$this->getName()}');");
-        $this->barber_id = $GLOBALS['DB']->lastInsertId();
+        $this->id = $GLOBALS['DB']->lastInsertId();
     }
 
     function getClients()
@@ -77,7 +77,7 @@
 
       static function deleteAll()
       {
-          $GLOBALS['DB']->exec("DELETE from barbers");
+          $GLOBALS['DB']->exec("DELETE from barbers;");
       }
 
       static function find($search_id)
