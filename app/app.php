@@ -2,7 +2,7 @@
     require_once __DIR__."/../vendor/autoload.php";
     require_once __DIR__."/../src/MyClass.php";
 
-    $server = 'mysql:host=localhost:8889;dbname=to_do';
+    $server = 'mysql:host=localhost:8889;dbname=keiths';
     $username = 'root';
     $password = 'root';
     $DB = new PDO($server, $username, $password);

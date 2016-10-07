@@ -50,7 +50,7 @@
 
       function update($barber_name)
       {
-        $GLOBALS['DB']->exec("UPDATE barbers SET name = '{$barber_name}' WHERE id = {$this->getId()}");
+        $GLOBALS['DB']->exec("UPDATE barbers SET name = '{$barber_name}' WHERE barber_id = {$this->getId()}");
         $this->setName($barber_name);
       }
 
@@ -61,7 +61,7 @@
         foreach ($returned_barbers as $barber)
         {
             $name = $barber['name'];
-            $barber_id = $barber['id'];
+            $barber_id = $barber['barber_id'];
             $new_barber = new Barber($name, $barber_id);
             array_push($barbers, $new_barber);
         }
@@ -71,8 +71,8 @@
 
       function delete()
       {
-        $GLOBALS['DB']->exec("DELETE FROM barbers WHERE id = {$this->getId()};");
-        $GLOBALS['DB']->exec("DELETE FROM clients WHERE barber_id = {$this->getId()};");
+        $GLOBALS['DB']->exec("DELETE FROM barbers WHERE barber_id = {$this->getId()};");
+        // $GLOBALS['DB']->exec("DELETE FROM clients WHERE barber_id = {$this->getId()};");
       }
 
       static function deleteAll()

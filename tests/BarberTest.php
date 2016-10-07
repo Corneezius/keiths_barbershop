@@ -26,13 +26,13 @@
         function test_getId()
         {
           // Arrange
-          $id = 1;
-          $name = "Keith";
-          $test_barber = new Barber ($name, $id);
+          $test_id = 1;
+          $test_name = "Keith";
+          $test_barber = new Barber ($test_name, $test_id);
           // Act
           $result = $test_barber->getId();
           // assert
-          $this->assertEquals($result, $id);
+          $this->assertEquals($result, $test_id);
         }
 
         function test_getName()
@@ -155,8 +155,7 @@
       {
           //ARRANGE
           $name = "Keith";
-          $id = null;
-          $test_barber = new Barber($name, $id);
+          $test_barber = new Barber($name);
           $test_barber->save();
           $new_name = "Chan";
           //ACT
@@ -170,10 +169,10 @@
           //Arrange
           $name = "Keith";
           $id = null;
-          $test_barber = new Barber($name, $id);
+          $test_barber = new Barber($name);
           $test_barber->save();
           $name2 = "Chan";
-          $test_barber2 = new Barber($name2, $id);
+          $test_barber2 = new Barber($name2);
           $test_barber2->save();
           //Act
           $test_barber->delete();

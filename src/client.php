@@ -10,7 +10,7 @@
     {
       $this->name = $client_name;
       $this->barber_id = $input_barber_id;
-      //NOTE: Need this line in order to make client objects with a non null id
+      //NOTE: Need this line in order to make client objects with a
       $this->id = $id;
     }
 
@@ -41,14 +41,14 @@
 
     function save()
     {
-        $GLOBALS['DB']->exec("INSERT INTO clients (name, barber_id) VALUES ('{$this->getClientName()}', '{$this->getBarberId()}');");
+        $GLOBALS['DB']->exec("INSERT INTO clients (name, barber_id) VALUES ('{$this->getClientName()}', {$this->getBarberId()});");
         $this->id = $GLOBALS['DB']->lastInsertId();
     }
 
     function update($new_name)
     {
       $GLOBALS['DB']->exec("UPDATE clients SET name = '{$new_name}' WHERE barber_id = {$this->getBarberId()};");
-      $this->setName($new_name);
+      $this->setClientName($new_name);
     }
 
     // function getClients()
@@ -78,7 +78,7 @@
             $client_id = $client['id'];
             $barber_id = $client['barber_id'];
             $new_client = new Client($name, $barber_id, $client_id);
-            array_push($client, $new_client);
+            array_push($clients, $new_client);
         }
 
         return $clients;
